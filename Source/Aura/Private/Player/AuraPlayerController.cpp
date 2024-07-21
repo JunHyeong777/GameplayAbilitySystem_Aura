@@ -28,6 +28,12 @@ void AAuraPlayerController::CursorTrace()
 	LastActor = ThisActor;
 	ThisActor = CursorHit.GetActor();
 
+	if(LastActor != ThisActor)
+	{
+		if(LastActor) LastActor->UnHighlightActor();
+		if(ThisActor) ThisActor->HighlightActor();
+	}
+	
 	/**
 	 * Line trace form cursor. There are several scenarios:
 	 * A. LastActor is null && ThisActor is null
